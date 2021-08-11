@@ -1,0 +1,22 @@
+    {% for variant in product.variants %}
+
+        {% unless variant_title == value %}
+
+        {% if variant.image and variant.title contains value%}
+
+        {%- assign img = variant.image | img_url: "large" -%}
+
+        <img src="{{img}}" />
+        {% assign variant_title = value %}
+
+        {% endif %}
+        {% endunless %}
+        {% endfor%}
+        
+        
+          $('.collection_round_swatch label').click(function(){
+    var vari_img = $(this).find('img').attr('src');
+      //console.log(vari_img);
+      $(this).parent().parent().siblings('.product-card__image-with-placeholder-wrapper').find('img').attr('srcset',vari_img);
+    })
+  });
